@@ -2,7 +2,8 @@
 Inventory management application
 
 ### Technologies:
-- React
+- React:
+    - react-router-dom
 - Node.Js
 
 ### How to run the project:
