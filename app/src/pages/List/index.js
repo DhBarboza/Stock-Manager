@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu } from '../../components/Menu';
+
 
 export const List = () => {
     // Gerenciamento de estado:
@@ -8,13 +11,19 @@ export const List = () => {
         // Criar um array:
         var values = [
             {
-                "id": 1,
+                "id": 3,
+                "name": "Tablet",
+                "value": 1800.00,
+                "amount": 1
+            },
+            {
+                "id": 2,
                 "name": "Notebook",
                 "value": 3200.00,
                 "amount": 1
             },
             {
-                "id": 2,
+                "id": 1,
                 "name": "Smartphone",
                 "value": 1300.00,
                 "amount": 3
@@ -30,6 +39,10 @@ export const List = () => {
 
     return(
         <>
+            <Menu />
+            <h1>Listar</h1>
+
+            <Link to="/register"><button type="button"></button></Link>
             <table>
                 <thead>
                     <tr>
@@ -47,7 +60,10 @@ export const List = () => {
 							<td>{product.name}</td>
 							<td>{product.value}</td>
 							<td>{product.amount}</td>
-							<td>Visualizar Editar Apagar</td>
+							<td>
+                                <Link to={"/toview/" + product.id}><button type="button">Visualizar</button></Link>
+                                Editar Apagar
+                            </td>
                         </tr>
                     ))}
 

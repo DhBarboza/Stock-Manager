@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Menu } from '../../components/Menu';
 
 export const Home = () => {
     return(
         <>
-            <Link to="/">Dashboard</Link>
-            <Link to="/list">Listar</Link>
+            <Menu />
         </>
     );
 }
