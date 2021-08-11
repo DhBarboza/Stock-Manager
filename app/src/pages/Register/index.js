@@ -14,6 +14,8 @@ export const Register = () => {
     const valueInput = e => setProduct({...product, [e.target.name]: e.target.value});
 
     const addProduct = async e => {
+        //Não regarregar a página:
+        e.preventDefault();
         console.log("Nome: " + product.name);
         console.log("Valor: " + product.name);
         console.log("Quantidade: " + product.name);
