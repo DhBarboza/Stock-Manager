@@ -62,7 +62,8 @@ export const List = () => {
 							<td>{product.amount}</td>
 							<td>
                                 <Link to={"/toview/" + product.id}><button type="button">Visualizar</button></Link>
-                                Editar Apagar
+                                <Link to={"/edit/" + product.id}><button type="button">Editar</button></Link>
+                                Apagar
                             </td>
                         </tr>
                     ))}
