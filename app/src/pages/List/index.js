@@ -35,7 +35,12 @@ export const List = () => {
     // QUando carregar a página el deve executar essa instrução:
     useEffect(() => {
         productList();
-    },[])
+    },[]);
+
+    // Função executa ao usuário selecionar botão de Deletar:
+    const deleteProduct = async (idProduct) => {
+        console.log(idProduct)
+    }
 
     return(
         <>
@@ -63,7 +68,8 @@ export const List = () => {
 							<td>
                                 <Link to={"/toview/" + product.id}><button type="button">Visualizar</button></Link>
                                 <Link to={"/edit/" + product.id}><button type="button">Editar</button></Link>
-                                Apagar
+                                <Link to={"#"}><button type="button" onClick={() => deleteProduct(product.id)}>Deletar</button></Link>
+                                
                             </td>
                         </tr>
                     ))}

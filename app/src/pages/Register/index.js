@@ -10,6 +10,12 @@ export const Register = () => {
         amount: ''
     });
 
+    // Exibir menssagem de validação:
+    const [status, setStatus] = useState({
+        type: '',
+        mensage: ''
+    });
+
     // Recebe os valores de entrada:
     const valueInput = e => setProduct({...product, [e.target.name]: e.target.value});
 
@@ -19,12 +25,18 @@ export const Register = () => {
         console.log("Nome: " + product.name);
         console.log("Valor: " + product.name);
         console.log("Quantidade: " + product.name);
+        setStatus({
+            type: 'error',
+            mensage: 'Produto não cadastrado com sucesso'
+        })
     }
 
     return(
         <>
             <Menu />
             <h1>Cadastrar</h1>
+
+            {status.type === 'error' ? <p>Produto não cadastrado com sucesso</p> : <p>Produto cadastrado com sucesso</p>}
 
             <form onSubmit={addProduct}>
                 <label>Nome: </label>
