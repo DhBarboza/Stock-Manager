@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Menu } from '../../components/Menu';
+import { Redirect } from 'react-router-dom';
 
 
 export const Register = () => {
@@ -27,7 +28,7 @@ export const Register = () => {
         console.log("Quantidade: " + product.name);
         setStatus({
             type: 'error',
-            mensage: 'Produto não cadastrado com sucesso'
+            mensage: 'Não foi possível cadastrar o produto'
         })
     }
 
@@ -36,7 +37,7 @@ export const Register = () => {
             <Menu />
             <h1>Cadastrar</h1>
 
-            {status.type === 'error' ? <p>Produto não cadastrado com sucesso</p> : <p>Produto cadastrado com sucesso</p>}
+            {status.type === 'error' ? <p>{status.mensage}</p> : <p>Produto cadastrado com sucesso</p>}
 
             <form onSubmit={addProduct}>
                 <label>Nome: </label>
