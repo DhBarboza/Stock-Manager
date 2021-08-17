@@ -27,8 +27,8 @@ export const Register = () => {
         console.log("Valor: " + product.name);
         console.log("Quantidade: " + product.name);
         setStatus({
-            type: 'error',
-            mensage: 'Não foi possível cadastrar o produto'
+            type: 'redirect',
+            mensage: 'Produto cadastrado com sucesso'
         })
     }
 
@@ -37,7 +37,16 @@ export const Register = () => {
             <Menu />
             <h1>Cadastrar</h1>
 
-            {status.type === 'error' ? <p>{status.mensage}</p> : <p>Produto cadastrado com sucesso</p>}
+            {status.type === 'error' ? <p>{status.mensage}</p> : ""}
+            {status.type === 'success' ? <p>{status.mensage}</p> : ""}
+            {status.type === 'redirect' ? <Redirect to={{
+                pathname: "/list",
+                state: {
+                    type: "success",
+                    mensage: status.mensage
+                }
+            }}/> : ""}
+
 
             <form onSubmit={addProduct}>
                 <label>Nome: </label>

@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu } from '../../components/Menu';
 
-
 export const List = () => {
+    // Utilizando desestruturação
+    const { state } = useLocation();
+
+    const [status, setStatus] = useState({
+        type: state ? 'success' : "",
+        mensage: state ? 'Produto cadastrado com sucesso' : ""
+    });
+
     // Gerenciamento de estado:
     const [data, setData] = useState([]);
 
@@ -46,6 +53,8 @@ export const List = () => {
         <>
             <Menu />
             <h1>Listar</h1>
+
+            {status.type === 'success' ? <p>{status.mensage}</p> : ""}
 
             <Link to="/register"><button type="button"></button></Link>
             <table>
