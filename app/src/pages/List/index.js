@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from '../../components/Menu';
+import { Container, Title, TitleContent, ActionButton, SuccessButton } from '../../styles/custom_adm';
+
 
 export const List = () => {
     // Utilizando desestruturação
     const { state } = useLocation();
 
-    const [status, setStatus] = useState({
+    const [status] = useState({
         type: state ? 'success' : "",
         mensage: state ? 'Produto cadastrado com sucesso' : ""
     });
@@ -50,13 +52,20 @@ export const List = () => {
     }
 
     return(
-        <>
+        <Container>
             <Menu />
-            <h1>Listar</h1>
+            <TitleContent>
+                <Title>Bem Vindo!</Title>
+                <ActionButton>
+                    <Link to="/register">
+                        <SuccessButton type="button">Cadastrar</SuccessButton>
+                    </Link>
+                </ActionButton>
+            </TitleContent>
 
             {status.type === 'success' ? <p>{status.mensage}</p> : ""}
 
-            <Link to="/register"><button type="button"></button></Link>
+            
             <table>
                 <thead>
                     <tr>
@@ -85,6 +94,6 @@ export const List = () => {
 
                 </tbody>
             </table>
-        </>
+        </Container>
     );
 }
