@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu } from '../../components/Menu';
-import { Container, Title, TitleContent, ActionButton, SuccessButton } from '../../styles/custom_adm';
+import { Container,
+            Title,
+            TitleContent, 
+            ActionButton, 
+            SuccessButton, 
+            Table, 
+            ViewButton, 
+            EditButton, 
+            DeleteButton
+        } from '../../styles/custom_adm';
 
 
 export const List = () => {
@@ -48,7 +57,8 @@ export const List = () => {
 
     // Função executa ao usuário selecionar botão de Deletar:
     const deleteProduct = async (idProduct) => {
-        console.log(idProduct)
+        //console.log(idProduct)
+        alert("Apagar produto: " + idProduct)
     }
 
     return(
@@ -66,10 +76,10 @@ export const List = () => {
             {status.type === 'success' ? <p>{status.mensage}</p> : ""}
 
             
-            <table>
+            <Table>
                 <thead>
                     <tr>
-                        <td>ID</td>
+                        <th>ID</th>
                         <td>Nome</td>
                         <td>Valor</td>
                         <td>Quantidade</td>
@@ -84,16 +94,21 @@ export const List = () => {
 							<td>{product.value}</td>
 							<td>{product.amount}</td>
 							<td>
-                                <Link to={"/toview/" + product.id}><button type="button">Visualizar</button></Link>
-                                <Link to={"/edit/" + product.id}><button type="button">Editar</button></Link>
-                                <Link to={"#"}><button type="button" onClick={() => deleteProduct(product.id)}>Deletar</button></Link>
+                                <Link to={"/toview/" + product.id}>
+                                    <ViewButton type="button">Visualizar</ViewButton>
+                                </Link>
+                                <Link to={"/edit/" + product.id}>
+                                    <EditButton type="button">Editar</EditButton>
+                                </Link>
+                                <Link to={"#"}>
+                                    <DeleteButton type="button" onClick={() => deleteProduct(product.id)}>Deletar</DeleteButton>
+                                </Link>
                                 
                             </td>
                         </tr>
                     ))}
-
                 </tbody>
-            </table>
+            </Table>
         </Container>
     );
 }
