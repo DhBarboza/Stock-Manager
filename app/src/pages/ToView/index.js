@@ -1,5 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'
 import { Menu } from '../../components/Menu';
+import { Container,
+    Title,
+    TitleContent, 
+    ActionButton, 
+    ListButton,
+    EditButton, 
+    Item
+} from '../../styles/custom_adm';
 
 
 export const ToView = (props) => {
@@ -20,12 +29,29 @@ export const ToView = (props) => {
         }
 
         getProducts();
-    },[id])
+    },[id]);
 
     return(
-        <>
+        <Container>
             <Menu />
-            <h1>Visualizar</h1>
-        </>
+            <TitleContent>
+                <Title>Visualizar</Title>
+                <ActionButton>
+                    <Link to="/list">
+                        <ListButton type="button">Listar</ListButton>
+                    </Link>{" "}
+                    <Link to={"/edit/" + id}>
+                        <EditButton type="button">Editar</EditButton>
+                    </Link>
+                </ActionButton>
+            </TitleContent>
+            <hr />
+
+            {/* <Item>ID: {data.id} </Item><br/>
+            <Item>Nome: {data.name} </Item><br/>
+            <Item>Valor: {data.value} </Item><br/>
+            <Item>Quantidade: {data.amount} </Item><br/> */}
+            
+        </Container>
     );
 }
